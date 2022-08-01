@@ -32,7 +32,6 @@ def draw():
 	# Draw restaurant ids from given style
 	# If ALL is given then draw from all restaurants
 	style = request.form.get('style', 'ALL')
-	print("style : ", style)
 	valid_restaurants_sql = 'SELECT id FROM restaurants '
 	if style == 'ALL':
 		cursor = db.execute(valid_restaurants_sql)
@@ -42,7 +41,6 @@ def draw():
 	valid_restaurant_ids = [
 		row[0] for row in cursor
 	]
-	print("valid restaurant : ", valid_restaurant_ids)
 
     # If no valid restaurants return 404 (unlikely)
 	if not valid_restaurant_ids:
@@ -62,7 +60,6 @@ def draw():
 	with db:
 		db.execute('INSERT INTO draw_histories (restaurant_id) VALUES (?)', (chosen_restaurant_id, ))
 
-	#return '<p>%s (團體: %s) </p>' % (restaurant_name, restaurant_style)
 	return render_template('draw.html', name=restaurant_name, style=restaurant_style, )
 
 @app.route('/history')
