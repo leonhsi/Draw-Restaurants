@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>來抽出餐廳吧！</h1>
+<p>選擇要被抽出的風格</p>
+<form action="/draw" method="post">
+	<label for="style">風格：</label>
+	<input type="radio" name="style" value="japan">日式
+	<input type="radio" name="style" value="thai">泰式
+	<input type="radio" name="style" value="ALL" checked>（全）
+	<input type="submit" value="Submit">
+</form>
+{% endblock content %}
